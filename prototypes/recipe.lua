@@ -3,7 +3,9 @@ data:extend({
 		type = "recipe",
 		name = "tar-liquefaction",
 		category = "chemistry",
+		icon = "__scrap-chemistry__/graphics/icons/fluid/tar-liquefaction.png",
 		subgroup = "fluid-recipes",
+		order = "a[oil-processing]-d[tar-liquefaction]",
 		enabled = false,
 		allow_productivity = true,
 		hide_from_signal_gui = false,
@@ -13,12 +15,14 @@ data:extend({
 			{type="fluid", name="steam", amount=150, fluidbox_index=1}
 		},
 		results = {
-			{type="fluid", name="crude-oil", amount=100}
+			{type="fluid", name="crude-oil", amount=100},
+			{type="fluid", name="heavy-oil", amount=20}
 		}
 	},
 	{
 		type = "recipe",
 		name = "petroleum-gas-cracking",
+		icon = "__scrap-chemistry__/graphics/icons/fluid/petroleum-gas-cracking.png",
 		category = "chemistry",
 		subgroup = "fluid-recipes",
 		order = "b[fluid-chemistry]-c[petroleum-gas-cracking]",
@@ -26,7 +30,8 @@ data:extend({
 		allow_productivity = true,
 		hide_from_signal_gui = false,
 		energy_required = 2,
-		-- 4*C3H8 (propane) + 2*H2O = 3*C4H10 (butane) + 1*O2
+		-- Technically, 4*C3H8 (propane) + 2*H2O = 3*C4H10 (butane) + 1*O2
+		-- but this is more balanced with butane pollution
 		ingredients = {
 			{type="fluid", name="petroleum-gas", amount=20},
 			{type="fluid", name="water", amount=30}
@@ -39,7 +44,7 @@ data:extend({
 		icon = "__scrap-chemistry__/graphics/icons/fluid/butane-pollution.png",
 		category = "chemistry",
 		subgroup = "fluid-recipes",
-		order = "b[fluid-chemistry]-bb[butane-pollution]",
+		order = "d[other-chemistry]-B[butane-pollution]",
 		enabled = false,
 		allow_productivity = true,
 		hide_from_signal_gui = false,
@@ -47,10 +52,11 @@ data:extend({
 		emissions_multiplier = 5,
 		ingredients = {
 			{type="fluid", name="butane", amount=100},
-			{type="item", name="tar", amount=1}
+			{type="fluid", name="water", amount=100},
+			{type="item", name="coal", amount=1}
 		},
 		results = {
-			{type="fluid", name="petroleum-gas", amount=20},
+			{type="fluid", name="light-oil", amount=20},
 			{type="fluid", name="sour-gas", amount=20}
 		}
 	},
@@ -71,13 +77,11 @@ data:extend({
 	},
 	{
 		type = "recipe",
-		name = "sulfuric-acid-from-sour-gas",
-		icons = {
-			{icon="__scrap-chemistry__/graphics/icons/fluid/sour-gas.png", shift={-12,-12}, scale=0.4},
-			{icon="__base__/graphics/icons/fluid/sulfuric-acid.png", draw_background=true}
-		},
+		name = "sour-gas-sweetening",
+		icon = "__scrap-chemistry__/graphics/icons/fluid/sour-gas-sweetening.png",
 		category = "chemistry",
 		subgroup = "fluid-recipes",
+		order = "d[other-chemistry]-D[sour-gas-sweetening]",
 		enabled = false,
 		allow_productivity = true,
 		hide_from_signal_gui = false,
@@ -93,8 +97,8 @@ data:extend({
 		type = "recipe",
 		name = "plastic-bar-from-butane",
 		icons = {
-			{icon="__base__/graphics/icons/plastic-bar.png"},
-			{icon="__scrap-chemistry__/graphics/icons/fluid/butane.png", shift={-12,-12}, scale=0.4}
+			{icon="__scrap-chemistry__/graphics/icons/fluid/butane.png", shift={-12,-12}, scale=0.4},
+			{icon="__base__/graphics/icons/plastic-bar.png", draw_background=true},
 		},
 		category = "chemistry",
 		enabled = false,
@@ -114,9 +118,11 @@ data:extend({
 	},
 	{
 		type = "recipe",
-		name = "synthetic-tar",
+		name = "tar",
+		localised_name = {"recipe-name.synthetic-tar"},
 		category = "chemistry",
-		subgroup = "intermediate-product",
+		subgroup = "raw-material",
+		order = "b[chemistry]-b[tar]",
 		enabled = false,
 		allow_productivity = true,
 		auto_recycle = false,
@@ -124,10 +130,9 @@ data:extend({
 		hide_from_signal_gui = false,
 		energy_required = 2,
 		ingredients = {
-			{type="fluid", name="crude-oil", amount=100},
-			{type="item", name="coal", amount=5}
+			{type="fluid", name="crude-oil", amount=125},
+			{type="item", name="coal", amount=3}
 		},
-		results = {{type="item", name="tar", amount=2}},
-		main_product = "tar"
+		results = {{type="item", name="tar", amount=1}}
 	}
 })

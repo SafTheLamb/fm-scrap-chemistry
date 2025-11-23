@@ -11,7 +11,7 @@ data:extend({
 			{size=64, filename="__scrap-chemistry__/graphics/icons/tar-1.png", scale=0.5, mipmap_count=4},
 			{size=64, filename="__scrap-chemistry__/graphics/icons/tar-2.png", scale=0.5, mipmap_count=4}
 		},
-		subgroup = "production-scrap",
+		subgroup = "raw-material",
     	order = "b[chemistry]-b[tar]",
 		inventory_move_sound = item_sounds.sulfur_inventory_move,
 		pick_sound = item_sounds.resource_inventory_pickup,

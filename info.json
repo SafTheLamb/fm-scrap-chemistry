@@ -3,7 +3,7 @@
 	"title": "Scrappy Chemistry",
 	"description": "",
 	"author": "SafTheLamb",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"factorio_version": "2.0",
 	"package": {
 		"ignore": ["thumbnail.afphoto", "**/*.afphoto", "**/*.ase", "**/*.afphoto~lock~", "**/*.pdn"]
@@ -11,6 +11,6 @@
 	"dependencies": [
 		"base",
 		"(?) quality",
-		"scrap-industry >= 0.11.0"
+		"scrap-industry >= 1.0.0"
 	]
 }
