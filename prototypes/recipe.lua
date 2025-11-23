@@ -2,8 +2,8 @@ data:extend({
 	{
 		type = "recipe",
 		name = "tar-liquefaction",
-		category = "chemistry",
 		icon = "__scrap-chemistry__/graphics/icons/fluid/tar-liquefaction.png",
+		category = "oil-processing",
 		subgroup = "fluid-recipes",
 		order = "a[oil-processing]-d[tar-liquefaction]",
 		enabled = false,
@@ -16,6 +16,7 @@ data:extend({
 		},
 		results = {
 			{type="fluid", name="crude-oil", amount=100},
+			{type="fluid", name="butane", amount=30},
 			{type="fluid", name="heavy-oil", amount=20}
 		}
 	},
@@ -36,13 +37,19 @@ data:extend({
 			{type="fluid", name="petroleum-gas", amount=20},
 			{type="fluid", name="water", amount=30}
 		},
-		results = {{type="fluid", name="butane", amount=10}}
+		results = {{type="fluid", name="butane", amount=10}},
+		crafting_machine_tint = {
+			primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+			secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+			tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+			quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+		}
 	},
 	{
 		type = "recipe",
 		name = "butane-pollution",
 		icon = "__scrap-chemistry__/graphics/icons/fluid/butane-pollution.png",
-		category = "chemistry",
+		category = "oil-processing",
 		subgroup = "fluid-recipes",
 		order = "d[other-chemistry]-B[butane-pollution]",
 		enabled = false,
@@ -51,12 +58,13 @@ data:extend({
 		energy_required = 10,
 		emissions_multiplier = 5,
 		ingredients = {
-			{type="fluid", name="butane", amount=100},
+			{type="fluid", name="butane", amount=120},
 			{type="fluid", name="water", amount=100},
 			{type="item", name="coal", amount=1}
 		},
 		results = {
-			{type="fluid", name="light-oil", amount=20},
+			{type="fluid", name="light-oil", amount=30},
+			{type="fluid", name="petroleum-gas", amount=20},
 			{type="fluid", name="sour-gas", amount=20}
 		}
 	},
@@ -91,7 +99,8 @@ data:extend({
 			{type="fluid", name="sour-gas", amount=50},
 			{type="fluid", name="water", amount=100}
 		},
-		results = {{type="fluid", name="sulfuric-acid", amount=50}}
+		results = {{type="fluid", name="sulfuric-acid", amount=50}},
+		crafting_machine_tint = data.raw.recipe["sulfuric-acid"].crafting_machine_tint
 	},
 	{
 		type = "recipe",
@@ -133,6 +142,12 @@ data:extend({
 			{type="fluid", name="crude-oil", amount=125},
 			{type="item", name="coal", amount=3}
 		},
-		results = {{type="item", name="tar", amount=1}}
+		results = {{type="item", name="tar", amount=1}},
+		crafting_machine_tint = {
+			primary = {r = 1.000, g = 1.000, b = 1.000, a = 1.000}, -- #fefeffff
+			secondary = {r = 0.771, g = 0.771, b = 0.771, a = 1.000}, -- #c4c4c4ff
+			tertiary = {r = 0.768, g = 0.665, b = 0.762, a = 1.000}, -- #c3a9c2ff
+			quaternary = {r = 0.000, g = 0.000, b = 0.000, a = 1.000}, -- #000000ff
+		}
 	}
 })

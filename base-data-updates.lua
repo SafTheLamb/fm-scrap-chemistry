@@ -6,22 +6,10 @@ local frep = require("__fdsl__.lib.recipe")
 local _,basic_petroleum_result = frep.get_result("basic-oil-processing", "petroleum-gas")
 if basic_petroleum_result then
 	local amount = basic_petroleum_result.amount
-	basic_petroleum_result.fluidbox_index = 2
-	frep.add_result("basic-oil-processing", {type="fluid", name="butane", amount=amount - 5, fluidbox_index=3})
+	basic_petroleum_result.fluidbox_index = 3
+	frep.add_result("basic-oil-processing", {type="fluid", name="butane", amount=amount - 5, fluidbox_index=2})
 	frep.add_result("basic-oil-processing", {type="fluid", name="sour-gas", amount=amount - 20, fluidbox_index=1})
 end
-
--- local advanced_oil_processing = data.raw.recipe["advanced-oil-processing"]
--- if advanced_oil_processing and advanced_oil_processing.results then
--- 	frep.replace_result("advanced-oil-processing", "petroleum-gas", "butane")
--- 	for _,result in pairs(advanced_oil_processing.results) do
--- 		if result.amount then
--- 			result.amount_min = 10 + 5 * math.floor(0.1 * result.amount)
--- 			result.amount_max = 10 + result.amount
--- 			result.amount = nil
--- 		end
--- 	end
--- end
 
 local function fudge_results(recipe_name, extra_amount)
 	extra_amount = extra_amount or 0
