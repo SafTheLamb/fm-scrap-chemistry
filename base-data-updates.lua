@@ -36,9 +36,21 @@ fudge_results("butane-pollution")
 frep.add_result("basic-oil-processing", {type="item", name="tar", amount=2, probability=0.47})
 frep.add_result("advanced-oil-processing", {type="item", name="tar", amount=1, probability=0.29})
 
+-------------------------------------------------------------------------- Petroleum gas
+
+frep.add_ingredient("explosives", {type="fluid", name="petroleum-gas", amount=10})
+if settings.startup["scrap-chemistry-rocket-fuel"].value then
+	frep.add_category("rocket-fuel", "chemistry")
+	frep.add_ingredient("rocket-fuel", {type="fluid", name="petroleum-gas", amount=10})
+end
+
+-------------------------------------------------------------------------- Sulfur
+
+if settings.startup["scrap-chemistry-sulfur"].value then
+	frep.replace_ingredient("sulfur", "petroleum-gas", "sour-gas")
+end
+
 -------------------------------------------------------------------------- Tar
 
 frep.add_ingredient("refined-concrete", {type="item", name="tar", amount=1})
 frep.add_ingredient("flamethrower-ammo", {type="item", name="tar", amount=2})
-frep.add_ingredient("rocket-fuel", {type="item", name="tar", amount=2})
-frep.replace_ingredient("explosives", "coal", "tar")

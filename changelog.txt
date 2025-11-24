@@ -1,7 +1,11 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.1.2
+Version: 0.2.0
 Date: ????
-  Changes:
+  Major Features:
+    - Rocket fuel now costs petroleum gas instead of tar (can be disabled).
+    - Rocket fuel is now crafted in the chemical plant (can be disabled).
+    - Explosives now cost petroleum gas, and cost coal again instead of tar.
+    - Sulfur can no longer be crafted from petroleum gas by default (can be disabled).
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 2025-11-23
