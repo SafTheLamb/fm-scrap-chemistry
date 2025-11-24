@@ -104,6 +104,27 @@ data:extend({
 	},
 	{
 		type = "recipe",
+		name = "sulfur-from-sour-gas",
+		icons = {
+			{icon="__scrap-chemistry__/graphics/icons/fluid/sour-gas.png", shift={-12,-12}, scale=0.4},
+			{icon="__base__/graphics/icons/sulfur.png", draw_background=true}
+		},
+		category = "chemistry",
+		order = "b[chemistry]-c[sulfur]-c[sour-gas]",
+		enabled = false,
+		allow_productivity = true,
+		auto_recycle = false,
+		allow_decomposition = false,
+		hide_from_signal_gui = false,
+		energy_required = 1,
+		ingredients = {
+			{type="fluid", name="sour-gas", amount=30},
+			{type="fluid", name="water", amount=30}
+		},
+		results = {{type="item", name="sulfur", amount=2}}
+	},
+	{
+		type = "recipe",
 		name = "plastic-bar-from-butane",
 		icons = {
 			{icon="__scrap-chemistry__/graphics/icons/fluid/butane.png", shift={-12,-12}, scale=0.4},

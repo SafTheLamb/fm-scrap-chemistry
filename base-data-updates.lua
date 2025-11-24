@@ -1,6 +1,6 @@
 local frep = require("__fdsl__.lib.recipe")
 
--------------------------------------------------------------------------- Basic oil processing
+-------------------------------------------------------------------------- Oil processing
 
 -- Basic oil processing
 local _,basic_petroleum_result = frep.get_result("basic-oil-processing", "petroleum-gas")
