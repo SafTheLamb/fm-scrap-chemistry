@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
-Date: ????
+Date: 2025-11-23
   Major Features:
     - Rocket fuel now costs petroleum gas instead of tar (can be disabled).
     - Rocket fuel is now crafted in the chemical plant (can be disabled).
