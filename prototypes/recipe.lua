@@ -15,9 +15,9 @@ data:extend({
 			{type="fluid", name="steam", amount=150, fluidbox_index=1}
 		},
 		results = {
-			{type="fluid", name="crude-oil", amount=100},
-			{type="fluid", name="butane", amount=30},
-			{type="fluid", name="heavy-oil", amount=20}
+			{type="fluid", name="heavy-oil", amount=50},
+			{type="fluid", name="petroleum-gas", amount=20},
+			{type="fluid", name="butane", amount=10}
 		}
 	},
 	{
@@ -43,6 +43,27 @@ data:extend({
 			secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
 			tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
 			quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+		}
+	},
+	{
+		type = "recipe",
+		name = "methane",
+		category = "chemistry",
+		subgroup = "fluid-recipes",
+		order = "a[fluid]-b[oil]-m[methane]",
+		enabled = false,
+		allow_productivity = true,
+		energy_required = 2,
+		ingredients = {
+			{type="fluid", name="light-oil", amount=10},
+			{type="fluid", name="petroleum-gas", amount=20},
+		},
+		results = {{type="fluid", name="methane", amount=40}},
+		crafting_machine_tint = {
+			primary = {r = 0.6, g = 0.6, b = 0.8, a = 1.000},
+			secondary = {r = 0.6, g = 0.592, b = 0.8, a = 1.000},
+			tertiary = {r = 0.7, g = 0.6, b = 0.8, a = 1.000},
+			quaternary = {r = 0.5, g = 0.3, b = 0.8, a = 1.000},
 		}
 	},
 	{
@@ -139,10 +160,10 @@ data:extend({
 		hide_from_signal_gui = false,
 		energy_required = 2,
 		ingredients = {
-			{type="fluid", name="crude-oil", amount=125},
-			{type="item", name="coal", amount=3}
+			{type="fluid", name="heavy-oil", amount=50},
+			{type="fluid", name="water", amount=20}
 		},
-		results = {{type="item", name="tar", amount=1}},
+		results = {{type="item", name="tar", amount=2}},
 		crafting_machine_tint = {
 			primary = {r = 1.000, g = 1.000, b = 1.000, a = 1.000}, -- #fefeffff
 			secondary = {r = 0.771, g = 0.771, b = 0.771, a = 1.000}, -- #c4c4c4ff
@@ -176,5 +197,66 @@ if not settings.startup["scrap-chemistry-sulfur"].value then
 			},
 			results = {{type="item", name="sulfur", amount=2}}
 		}
+	})
+end
+
+-------------------------------------------------------------------------- Space Age
+
+if mods["space-age"] then
+	-- Recipes mandatory to keep progression intact
+	data:extend({
+		{
+			type = "recipe",
+			name = "methane-from-carbon",
+			icons = {
+				{icon="__space-age__/graphics/icons/carbon.png", shift={-8,-8}, scale=0.3, draw_background=true},
+				{icon="__space-age__/graphics/icons/water.png", shift={8,-8}, scale=0.3, draw_background=true},
+				{icon="__scrap-chemistry__/graphics/icons/fluid/methane.png", shift={0,4}, scale=0.4, draw_background=true}
+			},
+			category = "chemistry",
+			subgroup = "space-processing",
+			order = "a[methane]",
+			enabled = false,
+			allow_productivity = true,
+			show_amount_in_title = false,
+			always_show_products = true,
+			auto_recycle = false,
+			energy_required = 1,
+			ingredients = {
+				{type="item", name="carbon", amount=2},
+				{type="fluid", name="water", amount=10}
+			},
+			results = {
+				{type="fluid", name="methane", amount=20}
+			},
+			crafting_machine_tint = {
+				primary = {r = 1.0, g = 0.7, b = 0.0, a = 1.000},
+				secondary = {r = 0.996, g = 0.742, b = 0.408, a = 1.000},
+				tertiary = {r = 0.768, g = 0.665, b = 0.762, a = 1.000},
+				quaternary = {r = 0.656, g = 0.562, b = 0.264, a = 1.000},
+			}
+		},
+		{
+			type = "recipe",
+			name = "electrolyte-souring",
+			icons = {
+				{icon="__scrap-chemistry__/graphics/icons/fluid/sour-gas.png", draw_background=true},
+				{icon="__space-age__/graphics/icons/fluid/electrolyte.png", shift={-12,-12}, scale=0.4}
+			},
+			category = "electromagnetics",
+			subgroup = "fulgora-processes",
+			order = "b[holmium]-s[sour-gas]",
+			enabled = false,
+			allow_productivity = true,
+			auto_recycle = false,
+			allow_decomposition = false,
+			hide_from_signal_gui = false,
+			energy_required = 5,
+			ingredients = {
+				{type="fluid", name="electrolyte", amount=10},
+				{type="fluid", name="steam", amount=50}
+			},
+			results = {{type="fluid", name="sour-gas", amount=50}}
+		},
 	})
 end

@@ -1,7 +1,17 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.2.1
+Version: 0.3.0
 Date: ????
+  Major Features:
+    - Added compatibility recipes for Space Age planets
+  Minor Features:
+    - Oil cracking recipes now yield Sour gas as byproduct (can be disabled).
+  Compatibility:
+    - Fulgora (Space Age): 
+    - Vulcanus (Space Age): 
   Changes:
+    - Tar liquefaction no longer produces crude oil (which broke progression on vanilla SA planets wide open)
+    - Increased heavy oil from tar liquefaction from 30 to 50 (+66%)
+    - Add machine tint to rocket fuel recipe (thanks S6X for caring!)
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2025-11-23

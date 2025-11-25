@@ -20,5 +20,20 @@ data:extend({
 		gas_temperature = 25,
 		base_color = {0.85, 0.75, 0.2},
 		flow_color = {0.9, 1, 0.25},
+	},
+	{
+		type = "fluid",
+		name = "methane",
+		icon = "__scrap-chemistry__/graphics/icons/fluid/methane.png",
+		subgroup = "fluid",
+		order = "a[fluid]-b[oil]-m[methane]",
+		default_temperature = 15,
+		gas_temperature = 15,
+		max_temperature = 535,
+		heat_capacity = "0.22kJ",
+		fuel_value = "5kJ",
+		auto_barrel = false,
+		base_color = {0.5, 0.5, 1},
+		flow_color = {1, 1, 1}
 	}
 })

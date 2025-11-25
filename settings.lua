@@ -12,3 +12,14 @@ data:extend({
 		default_value = true
 	}
 })
+
+if mods["space-age"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			name = "scrap-chemistry-thruster",
+			setting_type = "startup",
+			default_value = true
+		}
+	})
+end

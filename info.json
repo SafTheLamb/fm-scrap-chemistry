@@ -11,6 +11,8 @@
 	"dependencies": [
 		"base",
 		"(?) quality",
-		"scrap-industry >= 1.0.0"
+		"? space-age",
+		"scrap-industry >= 1.0.0",
+		"? Flare Stack"
 	]
 }

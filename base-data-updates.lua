@@ -36,18 +36,38 @@ fudge_results("butane-pollution")
 frep.add_result("basic-oil-processing", {type="item", name="tar", amount=2, probability=0.47})
 frep.add_result("advanced-oil-processing", {type="item", name="tar", amount=1, probability=0.29})
 
--------------------------------------------------------------------------- Petroleum gas
+-------------------------------------------------------------------------- Methane
 
-frep.add_ingredient("explosives", {type="fluid", name="petroleum-gas", amount=10})
+frep.replace_ingredient("explosives", "water", "methane")
+if settings.startup["scrap-chemistry-thruster"].value then
+	frep.replace_ingredient("thruster-fuel", "carbon", {type="fluid", name="methane", amount=20})
+end
+
 if settings.startup["scrap-chemistry-rocket-fuel"].value then
-	frep.add_category("rocket-fuel", "chemistry")
-	frep.add_ingredient("rocket-fuel", {type="fluid", name="petroleum-gas", amount=10})
+	local rocket_fuel_recipe = data.raw.recipe["rocket-fuel"]
+	if rocket_fuel_recipe then
+		frep.add_category("rocket-fuel", "chemistry")
+		frep.add_ingredient("rocket-fuel", {type="fluid", name="methane", amount=10})
+		rocket_fuel_recipe.crafting_machine_tint = rocket_fuel_recipe.crafting_machine_tint or {
+			primary = {r = 1.0, g = 0.7, b = 0.0, a = 1.000},
+			secondary = {r = 0.996, g = 0.742, b = 0.408, a = 1.000},
+			tertiary = {r = 0.768, g = 0.665, b = 0.762, a = 1.000},
+			quaternary = {r = 0.656, g = 0.562, b = 0.264, a = 1.000},
+		}
+	end
+
+	if mods["space-age"] then
+		frep.replace_ingredient("rocket-fuel-from-jelly", "water", "methane")
+	end
 end
 
 -------------------------------------------------------------------------- Sulfur
 
 if settings.startup["scrap-chemistry-sulfur"].value then
 	frep.replace_ingredient("sulfur", "petroleum-gas", "sour-gas")
+	frep.add_result("heavy-oil-cracking", {type="fluid", name="sour-gas", amount=10})
+	frep.add_result("light-oil-cracking", {type="fluid", name="sour-gas", amount=10})
+	frep.add_result("petroleum-gas-cracking", {type="fluid", name="sour-gas", amount=10})
 end
 
 -------------------------------------------------------------------------- Tar
