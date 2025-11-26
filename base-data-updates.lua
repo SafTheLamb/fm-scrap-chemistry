@@ -61,6 +61,18 @@ if settings.startup["scrap-chemistry-rocket-fuel"].value then
 	end
 end
 
+if mods["space-age"] then
+	local advanced_thruster_fuel = data.raw.recipe["advanced-thruster-fuel"]
+	if advanced_thruster_fuel then
+		frep.replace_ingredient("advanced-thruster-fuel", "carbon", {type="fluid", name="methane", amount=20})
+		advanced_thruster_fuel.icons = {
+			{icon="__scrap-chemistry__/graphics/icons/fluid/methane.png", shift={-8,-8}, scale=0.3, draw_background=true},
+			{icon="__space-age__/graphics/icons/calcite.png", shift={8,-8}, scale=0.3, draw_background=true},
+			{icon="__space-age__/graphics/icons/fluid/thruster-fuel.png", shift={0,4}, scale=0.4, draw_background=true}
+		}
+	end
+end
+
 -------------------------------------------------------------------------- Sulfur
 
 if settings.startup["scrap-chemistry-sulfur"].value then
@@ -72,5 +84,4 @@ end
 
 -------------------------------------------------------------------------- Tar
 
-frep.add_ingredient("refined-concrete", {type="item", name="tar", amount=1})
 frep.add_ingredient("flamethrower-ammo", {type="item", name="tar", amount=2})

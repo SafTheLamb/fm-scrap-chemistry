@@ -1,27 +1,6 @@
 data:extend({
 	{
 		type = "recipe",
-		name = "tar-liquefaction",
-		icon = "__scrap-chemistry__/graphics/icons/fluid/tar-liquefaction.png",
-		category = "oil-processing",
-		subgroup = "fluid-recipes",
-		order = "a[oil-processing]-d[tar-liquefaction]",
-		enabled = false,
-		allow_productivity = true,
-		hide_from_signal_gui = false,
-		energy_required = 5,
-		ingredients = {
-			{type="item", name="tar", amount=10},
-			{type="fluid", name="steam", amount=150, fluidbox_index=1}
-		},
-		results = {
-			{type="fluid", name="heavy-oil", amount=50},
-			{type="fluid", name="petroleum-gas", amount=20},
-			{type="fluid", name="butane", amount=10}
-		}
-	},
-	{
-		type = "recipe",
 		name = "petroleum-gas-cracking",
 		icon = "__scrap-chemistry__/graphics/icons/fluid/petroleum-gas-cracking.png",
 		category = "chemistry",
@@ -170,6 +149,27 @@ data:extend({
 			tertiary = {r = 0.768, g = 0.665, b = 0.762, a = 1.000}, -- #c3a9c2ff
 			quaternary = {r = 0.000, g = 0.000, b = 0.000, a = 1.000}, -- #000000ff
 		}
+	},
+	{
+		type = "recipe",
+		name = "tar-liquefaction",
+		icon = "__scrap-chemistry__/graphics/icons/fluid/tar-liquefaction.png",
+		category = "oil-processing",
+		subgroup = "fluid-recipes",
+		order = "a[oil-processing]-d[tar-liquefaction]",
+		enabled = false,
+		allow_productivity = true,
+		hide_from_signal_gui = false,
+		energy_required = 5,
+		ingredients = {
+			{type="item", name="tar", amount=10},
+			{type="fluid", name="steam", amount=150, fluidbox_index=1}
+		},
+		results = {
+			{type="fluid", name="heavy-oil", amount=50},
+			{type="fluid", name="petroleum-gas", amount=20},
+			{type="fluid", name="butane", amount=10}
+		}
 	}
 })
 
@@ -210,7 +210,7 @@ if mods["space-age"] then
 			name = "methane-from-carbon",
 			icons = {
 				{icon="__space-age__/graphics/icons/carbon.png", shift={-8,-8}, scale=0.3, draw_background=true},
-				{icon="__space-age__/graphics/icons/water.png", shift={8,-8}, scale=0.3, draw_background=true},
+				{icon="__base__/graphics/icons/fluid/water.png", shift={8,-8}, scale=0.3, draw_background=true},
 				{icon="__scrap-chemistry__/graphics/icons/fluid/methane.png", shift={0,4}, scale=0.4, draw_background=true}
 			},
 			category = "chemistry",
