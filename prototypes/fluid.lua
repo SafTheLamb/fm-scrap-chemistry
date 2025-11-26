@@ -37,3 +37,20 @@ data:extend({
 		flow_color = {1, 1, 1}
 	}
 })
+
+if mods["space-age"] then
+	data:extend({
+		{
+			type = "fluid",
+			name = "hydrazine",
+			icon = "__scrap-chemistry__/graphics/icons/fluid/hydrazine.png",
+			subgroup = "fluid",
+			order = "b[new-fluid]-e[aquilo]-c[hydrazine]",
+			default_temperature = 25,
+			heat_capacity = "0.44kJ",
+			fuel_value = "10kJ",
+			base_color = {0.25, 0.25, 1},
+			flow_color = {0.75, 0.75, 1}
+		}
+	})
+end
