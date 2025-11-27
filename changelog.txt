@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.0
-Date: ????
+Date: 2025-11-26
   Major Features:
     - Added Methane, a new gas used to make more volatile chemical materials
     - [space-age] Added Hydrazine, made from Ammonia and used on Aquilo for high-energy recipes
