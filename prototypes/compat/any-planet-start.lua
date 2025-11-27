@@ -14,7 +14,6 @@ if mods["any-planet-start"] then
 			count = 10
 		}
 	elseif starting_planet == "fulgora" then
-		frep.replace_ingredient("sour-gas-sweetening", "calcite", {type="fluid", name="water", amount=10})
 		ftech.remove_unlock("calcite-processing", "sour-gas-sweetening")
 		ftech.add_unlock("electromagnetic-plant", "sour-gas-sweetening")
 	elseif starting_planet == "gleba" then

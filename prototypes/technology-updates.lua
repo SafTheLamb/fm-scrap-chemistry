@@ -15,6 +15,7 @@ if mods["space-age"] then
 	ftech.add_unlock("space-platform-thruster", "methane-from-carbon", 3)
 	ftech.add_unlock("calcite-processing", "sour-gas-sweetening")
 	ftech.add_unlock("electromagnetic-plant","electrolyte-souring")
+	ftech.add_unlock("electromagnetic-plant", "sour-gas-pollution")
 	ftech.add_unlock("planet-discovery-aquilo", "hydrazine", 4)
 	local coal_liquefaction = data.raw.technology["coal-liquefaction"]
 	if coal_liquefaction then
@@ -22,4 +23,5 @@ if mods["space-age"] then
 	end
 else
 	ftech.add_unlock("sulfur-processing", "sour-gas-sweetening")
+	ftech.add_unlock("sulfur-processing", "sour-gas-pollution")
 end

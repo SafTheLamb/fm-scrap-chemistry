@@ -32,7 +32,7 @@ data:extend({
 		order = "a[fluid]-b[oil]-m[methane]",
 		enabled = false,
 		allow_productivity = true,
-		energy_required = 2,
+		energy_required = 1,
 		ingredients = {
 			{type="fluid", name="light-oil", amount=10},
 			{type="fluid", name="petroleum-gas", amount=20},
@@ -55,7 +55,7 @@ data:extend({
 		enabled = false,
 		allow_productivity = true,
 		hide_from_signal_gui = false,
-		energy_required = 10,
+		energy_required = 5,
 		emissions_multiplier = 5,
 		ingredients = {
 			{type="fluid", name="butane", amount=120},
@@ -105,6 +105,34 @@ data:extend({
 	},
 	{
 		type = "recipe",
+		name = "sour-gas-pollution",
+		icon = "__scrap-chemistry__/graphics/icons/fluid/sour-gas-pollution.png",
+		category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+		subgroup = "fluid-recipes",
+		order = "d[other-chemistry]-D[sour-gas-sweetening]b",
+		enabled = false,
+		allow_productivity = true,
+		hide_from_signal_gui = false,
+		energy_required = 1,
+		emissions_multiplier = 5,
+		ingredients = {
+			{type="item", name="solid-fuel", amount=1},
+			{type="fluid", name="sour-gas", amount=30},
+			{type="fluid", name="butane", amount=20}
+		},
+		results = {
+			{type="fluid", name="light-oil", amount=10},
+			{type="item", name="sulfur", amount=3}
+		},
+		crafting_machine_tint = {
+			primary = {r = 0.800, g = 0.758, b = 0.000, a = 1.000},
+			secondary = {r = 0.800, g = 0.652, b = 0.072, a = 1.000},
+			tertiary = {r = 0.676, g = 0.669, b = 0.397, a = 1.000},
+			quaternary = {r = 0.769, g = 0.800, b = 0.019, a = 1.000},
+		} -- slightly darker sulfuric acid
+	},
+	{
+		type = "recipe",
 		name = "plastic-bar-from-butane",
 		icons = {
 			{icon="__scrap-chemistry__/graphics/icons/fluid/butane.png", shift={-12,-12}, scale=0.4},
@@ -138,7 +166,7 @@ data:extend({
 		auto_recycle = false,
 		allow_decomposition = false,
 		hide_from_signal_gui = false,
-		energy_required = 2,
+		energy_required = 1,
 		ingredients = {
 			{type="fluid", name="heavy-oil", amount=50},
 			{type="fluid", name="water", amount=20}
@@ -246,7 +274,7 @@ if mods["space-age"] then
 			enabled = false,
 			allow_productivity = true,
 			auto_recycle = false,
-			energy_required = 8,
+			energy_required = 10,
 			ingredients = {
 				{type="fluid", name="ammonia", amount=100},
 				{type="fluid", name="water", amount=10},

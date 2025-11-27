@@ -31,6 +31,7 @@ fudge_results("advanced-oil-processing", 10)
 fudge_results("tar-liquefaction")
 fudge_results("petroleum-gas-cracking")
 fudge_results("sour-gas-sweetening")
+fudge_results("sour-gas-pollution")
 fudge_results("butane-pollution")
 
 frep.add_result("basic-oil-processing", {type="item", name="tar", amount=2, probability=0.47})

@@ -2,24 +2,26 @@
 Version: 0.3.0
 Date: ????
   Major Features:
-    - Added compatibility recipes for Space Age planets
-    - Add Methane, a new gas used for explosives and rocket fuel
-    - Remove water from the recipe for Sour gas sweetening (for Vulcanus compatibility)
+    - Added Methane, a new gas used to make more volatile chemical materials
+    - [space-age] Added Hydrazine, made from Ammonia and used on Aquilo for high-energy recipes
   Minor Features:
-    - Oil cracking recipes now yield Sour gas as byproduct (can be disabled)
+    - Added Sour gas pollution, which uses Butane and Solid fuel to produce Light oil and Sulfur
+    - [space-age] Added a recipe to make Methane from Carbon and Water
+    - [space-age] Add a setting to change Thruster fuel to be crafted with Methane instead of Carbon
+    - [space-age] Sulfuric acid geysers on Vulcanus now yield sour gas when "Modify sulfur" is enabled
   Compatibility:
-    - Space Age: Add Methane from carbon recipe
-    - Space Age: Advanced thruster fuel now uses methane (can be disabled)
-    - Space Age: Sulfuric acid geysers on Vulcanus now yield sour gas when "Modify sulfur" is enabled
-    - Space Age: Add electrolyte souring to produce sour gas when "Modify sulfur" is enabled
+    - [space-age] Any Planet Start: Compatibility for Vulcanus, Fulgora, and Gleba has been added
   Graphics:
     - Updated the sour gas icon to make it more distinct from the vanilla steam icon
+    - Add machine tint to rocket fuel recipe
   Changes:
+    - [space-age] Sour gas sweetening now uses Calcite to produce Sulfuric acid
+    - [space-age] Thruster fuel is now produced with Methane instead of Carbon (can be disabled)
+    - [space-age] Simple coal liquefaction has been changed to produce petroleum gas instead of heavy oil
+    - Coal liquefaction has been changed to produce light oil instead of heavy oil
+    - Tar liquefaction has been changed to produce heavy oil instead of crude oil
     - Explosives now use methane instead of petroleum gas and water
-    - Tar liquefaction no longer produces crude oil (which broke progression on vanilla SA planets wide open)
-    - Increased heavy oil from tar liquefaction from 30 to 50 (+66%)
     - Removed tar from refined concrete recipe
-    - Add machine tint to rocket fuel recipe (thanks S6X for caring!)
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2025-11-23
