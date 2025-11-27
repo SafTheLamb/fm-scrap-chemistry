@@ -10,9 +10,10 @@
 	},
 	"dependencies": [
 		"base",
-		"(?) quality",
 		"? space-age",
 		"scrap-industry >= 1.0.0",
-		"? Flare Stack"
+		"fdsl >= 0.2.4",
+		"? Flare Stack",
+		"(?) any-planet-start"
 	]
 }

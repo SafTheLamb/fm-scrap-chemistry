@@ -5,8 +5,9 @@ data:extend({
 		icon = "__scrap-chemistry__/graphics/technology/tar-processing.png",
 		icon_size = 256,
 		effects = {
+			{type="unlock-recipe", recipe="tar"},
 			{type="unlock-recipe", recipe="tar-liquefaction"},
-			{type="unlock-recipe", recipe="tar"}
+			{type="unlock-recipe", recipe="butane-pollution"}
 		},
 		prerequisites = {"advanced-oil-processing"},
 		unit = {

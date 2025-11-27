@@ -27,7 +27,7 @@ data:extend({
 	{
 		type = "recipe",
 		name = "methane",
-		category = "chemistry",
+		category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
 		subgroup = "fluid-recipes",
 		order = "a[fluid]-b[oil]-m[methane]",
 		enabled = false,
@@ -60,7 +60,7 @@ data:extend({
 		ingredients = {
 			{type="fluid", name="butane", amount=120},
 			{type="fluid", name="water", amount=100},
-			{type="item", name="coal", amount=1}
+			{type="item", name="tar", amount=1}
 		},
 		results = {
 			{type="fluid", name="light-oil", amount=30},
@@ -87,7 +87,7 @@ data:extend({
 		type = "recipe",
 		name = "sour-gas-sweetening",
 		icon = "__scrap-chemistry__/graphics/icons/fluid/sour-gas-sweetening.png",
-		category = "chemistry",
+		category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 		subgroup = "fluid-recipes",
 		order = "d[other-chemistry]-D[sour-gas-sweetening]",
 		enabled = false,
@@ -95,11 +95,12 @@ data:extend({
 		hide_from_signal_gui = false,
 		energy_required = 1,
 		ingredients = {
-			{type="item", name="iron-plate", amount=1},
-			{type="fluid", name="sour-gas", amount=50},
-			{type="fluid", name="water", amount=100}
+			{type="item", name=mods["space-age"] and "calcite" or "coal", amount=1},
+			{type="fluid", name="sour-gas", amount=50}
 		},
-		results = {{type="fluid", name="sulfuric-acid", amount=50}},
+		results = {
+			{type="fluid", name="sulfuric-acid", amount=50}
+		},
 		crafting_machine_tint = data.raw.recipe["sulfuric-acid"].crafting_machine_tint
 	},
 	{
@@ -109,7 +110,7 @@ data:extend({
 			{icon="__scrap-chemistry__/graphics/icons/fluid/butane.png", shift={-12,-12}, scale=0.4},
 			{icon="__base__/graphics/icons/plastic-bar.png", draw_background=true},
 		},
-		category = "chemistry",
+		category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 		enabled = false,
 		allow_productivity = true,
 		auto_recycle = false,
@@ -163,10 +164,11 @@ data:extend({
 		energy_required = 5,
 		ingredients = {
 			{type="item", name="tar", amount=10},
+			{type="fluid", name="light-oil", amount=25, fluidbox_index=2},
 			{type="fluid", name="steam", amount=150, fluidbox_index=1}
 		},
 		results = {
-			{type="fluid", name="heavy-oil", amount=50},
+			{type="fluid", name="heavy-oil", amount=75, ignored_by_productivity=25},
 			{type="fluid", name="petroleum-gas", amount=20},
 			{type="fluid", name="butane", amount=10}
 		}
@@ -203,7 +205,6 @@ end
 -------------------------------------------------------------------------- Space Age
 
 if mods["space-age"] then
-	-- Recipes mandatory to keep progression intact
 	data:extend({
 		{
 			type = "recipe",
@@ -213,7 +214,7 @@ if mods["space-age"] then
 				{icon="__base__/graphics/icons/fluid/water.png", shift={8,-8}, scale=0.3, draw_background=true},
 				{icon="__scrap-chemistry__/graphics/icons/fluid/methane.png", shift={0,4}, scale=0.4, draw_background=true}
 			},
-			category = "chemistry",
+			category = "organic-or-chemistry",
 			subgroup = "space-processing",
 			order = "a[methane]",
 			enabled = false,
@@ -238,25 +239,51 @@ if mods["space-age"] then
 		},
 		{
 			type = "recipe",
-			name = "electrolyte-souring",
-			icons = {
-				{icon="__scrap-chemistry__/graphics/icons/fluid/sour-gas.png", draw_background=true},
-				{icon="__space-age__/graphics/icons/fluid/electrolyte.png", shift={-12,-12}, scale=0.4}
-			},
-			category = "electromagnetics",
-			subgroup = "fulgora-processes",
-			order = "b[holmium]-s[sour-gas]",
+			name = "hydrazine",
+			category = "chemistry-or-cryogenics",
+			subgroup = "aquilo-processes",
+			order = "a[ammonia]-c[hydrazine]",
 			enabled = false,
 			allow_productivity = true,
 			auto_recycle = false,
-			allow_decomposition = false,
-			hide_from_signal_gui = false,
-			energy_required = 5,
+			energy_required = 8,
 			ingredients = {
-				{type="fluid", name="electrolyte", amount=10},
-				{type="fluid", name="steam", amount=50}
+				{type="fluid", name="ammonia", amount=100},
+				{type="fluid", name="water", amount=10},
+				{type="fluid", name="butane", amount=50}
 			},
-			results = {{type="fluid", name="sour-gas", amount=50}}
-		},
+			results = {
+				{type="fluid", name="hydrazine", amount=100},
+				{type="item", name="carbon", amount=1}
+			},
+			main_product = "hydrazine"
+		}
 	})
+
+	if settings.startup["scrap-chemistry-sulfur"].value then
+		data:extend({
+			{
+				type = "recipe",
+				name = "electrolyte-souring",
+				icons = {
+					{icon="__space-age__/graphics/icons/fluid/electrolyte.png", shift={0,-4}, scale=0.4},
+					{icon="__scrap-chemistry__/graphics/icons/fluid/electrolyte-souring-overlay.png", shift={0,2}, scale=0.45, draw_background=true}
+				},
+				category = "electromagnetics",
+				subgroup = "fulgora-processes",
+				order = "b[holmium]-e[electrolyte]-b[souring]",
+				enabled = false,
+				allow_productivity = true,
+				auto_recycle = false,
+				allow_decomposition = false,
+				hide_from_signal_gui = false,
+				energy_required = 5,
+				ingredients = {
+					{type="fluid", name="electrolyte", amount=10},
+					{type="fluid", name="steam", amount=50}
+				},
+				results = {{type="fluid", name="sour-gas", amount=50}}
+			}
+		})
+	end
 end

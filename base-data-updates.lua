@@ -35,13 +35,11 @@ fudge_results("butane-pollution")
 
 frep.add_result("basic-oil-processing", {type="item", name="tar", amount=2, probability=0.47})
 frep.add_result("advanced-oil-processing", {type="item", name="tar", amount=1, probability=0.29})
+frep.replace_result("advanced-oil-processing", "petroleum-gas", "butane")
 
 -------------------------------------------------------------------------- Methane
 
 frep.replace_ingredient("explosives", "water", "methane")
-if settings.startup["scrap-chemistry-thruster"].value then
-	frep.replace_ingredient("thruster-fuel", "carbon", {type="fluid", name="methane", amount=20})
-end
 
 if settings.startup["scrap-chemistry-rocket-fuel"].value then
 	local rocket_fuel_recipe = data.raw.recipe["rocket-fuel"]
@@ -61,7 +59,8 @@ if settings.startup["scrap-chemistry-rocket-fuel"].value then
 	end
 end
 
-if mods["space-age"] then
+if mods["space-age"] and settings.startup["scrap-chemistry-thruster"].value then
+	frep.replace_ingredient("thruster-fuel", "carbon", {type="fluid", name="methane", amount=20})
 	local advanced_thruster_fuel = data.raw.recipe["advanced-thruster-fuel"]
 	if advanced_thruster_fuel then
 		frep.replace_ingredient("advanced-thruster-fuel", "carbon", {type="fluid", name="methane", amount=20})
@@ -78,10 +77,58 @@ end
 if settings.startup["scrap-chemistry-sulfur"].value then
 	frep.replace_ingredient("sulfur", "petroleum-gas", "sour-gas")
 	frep.add_result("heavy-oil-cracking", {type="fluid", name="sour-gas", amount=10})
-	frep.add_result("light-oil-cracking", {type="fluid", name="sour-gas", amount=10})
-	frep.add_result("petroleum-gas-cracking", {type="fluid", name="sour-gas", amount=10})
+	frep.add_result("light-oil-cracking", {type="fluid", name="sour-gas", amount=5})
+
+	if mods["space-age"] then
+		local sulfur_geyser = data.raw.resource["sulfuric-acid-geyser"]
+		if sulfur_geyser then
+			sulfur_geyser.localised_name = {"entity-name.sour-gas-geyser"}
+			if sulfur_geyser.minable then
+				for _,result in pairs(sulfur_geyser.minable.results or {}) do
+					if result.name == "sulfuric-acid" then
+						result.name = "sour-gas"
+					end
+				end
+			end
+		end
+	end
 end
 
 -------------------------------------------------------------------------- Tar
 
 frep.add_ingredient("flamethrower-ammo", {type="item", name="tar", amount=2})
+local coal_liquefaction = data.raw.recipe["coal-liquefaction"]
+if coal_liquefaction then
+	coal_liquefaction.icon = "__scrap-chemistry__/graphics/icons/fluid/coal-liquefaction.png"
+	frep.replace_ingredient("coal-liquefaction", "heavy-oil", "light-oil")
+	frep.replace_result("coal-liquefaction", "petroleum-gas", "butane")
+	frep.replace_result("coal-liquefaction", "light-oil", "petroleum-gas")
+	frep.replace_result("coal-liquefaction", "heavy-oil", "light-oil")
+	-- simple coal liquefaction too!
+end
+if mods["space-age"] then
+	local simple_coal_liquefaction = data.raw.recipe["simple-coal-liquefaction"]
+	if simple_coal_liquefaction then
+		simple_coal_liquefaction.icons = {
+			{icon="__space-age__/graphics/icons/calcite-2.png", shift={-6,-6}, scale=0.3, draw_background=true},
+			{icon="__scrap-chemistry__/graphics/icons/fluid/simple-coal-liquefaction-overlay.png", draw_background=true},
+		}
+		frep.replace_result("simple-coal-liquefaction", "heavy-oil", "petroleum-gas")
+		frep.add_result("simple-coal-liquefaction", {type="fluid", name="butane", amount=10})
+		frep.add_result("simple-coal-liquefaction", {type="item", name="tar", amount=1})
+	end
+end
+
+-------------------------------------------------------------------------- Hydrazine
+
+if mods["space-age"] then
+	local ammonia_rocket_fuel = data.raw.recipe["ammonia-rocket-fuel"]
+	if ammonia_rocket_fuel then
+		ammonia_rocket_fuel.localised_name = {"recipe-name.hydrazine-rocket-fuel"}
+		ammonia_rocket_fuel.order = "a[ammonia]-c[hydrazine]-a[rocket-fuel]"
+		frep.remove_ingredient("ammonia-rocket-fuel", "water")
+		frep.replace_ingredient("ammonia-rocket-fuel", "ammonia", "hydrazine")
+	end
+	frep.replace_ingredient("fluoroketone", "ammonia", "hydrazine")
+	frep.replace_ingredient("fusion-power-cell", "ammonia", "hydrazine")
+end

@@ -12,10 +12,12 @@ data:extend({
 			{size=64, filename="__scrap-chemistry__/graphics/icons/tar-2.png", scale=0.5, mipmap_count=4}
 		},
 		subgroup = "raw-material",
-    	order = "b[chemistry]-b[tar]",
+		order = "b[chemistry]-b[tar]",
 		inventory_move_sound = item_sounds.sulfur_inventory_move,
 		pick_sound = item_sounds.resource_inventory_pickup,
 		drop_sound = item_sounds.sulfur_inventory_move,
+		fuel_category = "chemical",
+		fuel_value = "2MJ",
 		stack_size = 50,
 		weight = 1*kg,
 		random_tint_color = item_tints.yellowing_coal

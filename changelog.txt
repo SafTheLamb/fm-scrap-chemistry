@@ -4,13 +4,18 @@ Date: ????
   Major Features:
     - Added compatibility recipes for Space Age planets
     - Add Methane, a new gas used for explosives and rocket fuel
+    - Remove water from the recipe for Sour gas sweetening (for Vulcanus compatibility)
   Minor Features:
-    - Oil cracking recipes now yield Sour gas as byproduct (can be disabled).
-    - Advanced thruster fuel now uses methane (can be disabled).
+    - Oil cracking recipes now yield Sour gas as byproduct (can be disabled)
   Compatibility:
-    - Fulgora (Space Age): 
-    - Vulcanus (Space Age): 
+    - Space Age: Add Methane from carbon recipe
+    - Space Age: Advanced thruster fuel now uses methane (can be disabled)
+    - Space Age: Sulfuric acid geysers on Vulcanus now yield sour gas when "Modify sulfur" is enabled
+    - Space Age: Add electrolyte souring to produce sour gas when "Modify sulfur" is enabled
+  Graphics:
+    - Updated the sour gas icon to make it more distinct from the vanilla steam icon
   Changes:
+    - Explosives now use methane instead of petroleum gas and water
     - Tar liquefaction no longer produces crude oil (which broke progression on vanilla SA planets wide open)
     - Increased heavy oil from tar liquefaction from 30 to 50 (+66%)
     - Removed tar from refined concrete recipe
