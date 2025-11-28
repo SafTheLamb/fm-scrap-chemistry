@@ -1,29 +1,11 @@
+--- Fluidbox index priority is as follows:
+--- Heavy oil is prioritized at index 1
+--- Light oil is prioritized at index 2
+--- Butane is prioritized at index 3
+--- Petroleum gas is prioritized at index 1 (but lower priority than Heavy oil)
+--- Sour gas is a byproduct and goes wherever it fits
+
 data:extend({
-	{
-		type = "recipe",
-		name = "petroleum-gas-cracking",
-		icon = "__scrap-chemistry__/graphics/icons/fluid/petroleum-gas-cracking.png",
-		category = "chemistry",
-		subgroup = "fluid-recipes",
-		order = "b[fluid-chemistry]-c[petroleum-gas-cracking]",
-		enabled = false,
-		allow_productivity = true,
-		hide_from_signal_gui = false,
-		energy_required = 2,
-		-- Technically, 4*C3H8 (propane) + 2*H2O = 3*C4H10 (butane) + 1*O2
-		-- but this is more balanced with butane pollution
-		ingredients = {
-			{type="fluid", name="petroleum-gas", amount=20},
-			{type="fluid", name="water", amount=30}
-		},
-		results = {{type="fluid", name="butane", amount=10}},
-		crafting_machine_tint = {
-			primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
-			secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
-			tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
-			quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
-		}
-	},
 	{
 		type = "recipe",
 		name = "methane",
@@ -63,9 +45,9 @@ data:extend({
 			{type="item", name="tar", amount=1}
 		},
 		results = {
-			{type="fluid", name="light-oil", amount=30},
-			{type="fluid", name="petroleum-gas", amount=20},
-			{type="fluid", name="sour-gas", amount=20}
+			{type="fluid", name="light-oil", amount=30, fluidbox_index=2},
+			{type="fluid", name="petroleum-gas", amount=20, fluidbox_index=1},
+			{type="fluid", name="sour-gas", amount=20, fluidbox_index=3} -- sour gas has low priority over fluid index
 		}
 	},
 	{
@@ -192,8 +174,8 @@ data:extend({
 		energy_required = 5,
 		ingredients = {
 			{type="item", name="tar", amount=10},
-			{type="fluid", name="light-oil", amount=25, fluidbox_index=2},
-			{type="fluid", name="steam", amount=150, fluidbox_index=1}
+			{type="fluid", name="light-oil", amount=25, fluidbox_index=1},
+			{type="fluid", name="steam", amount=150, fluidbox_index=2}
 		},
 		results = {
 			{type="fluid", name="heavy-oil", amount=75, ignored_by_productivity=25},
@@ -226,6 +208,65 @@ if not settings.startup["scrap-chemistry-sulfur"].value then
 				{type="fluid", name="water", amount=30}
 			},
 			results = {{type="item", name="sulfur", amount=2}}
+		}
+	})
+end
+
+-------------------------------------------------------------------------- Butane/petroleum gas cracking
+
+if settings.startup["scrap-chemistry-butane-realism"].value then
+	data:extend({
+		{
+			type = "recipe",
+			name = "butane-cracking",
+			icon = "__scrap-chemistry__/graphics/icons/fluid/butane-cracking.png",
+			category = "chemistry",
+			subgroup = "fluid-recipes",
+			order = "b[fluid-chemistry]-c[butane-cracking]",
+			enabled = false,
+			allow_productivity = true,
+			hide_from_signal_gui = false,
+			energy_required = 2,
+			-- Technically the ratios for this aren't quite right, but for balance reasons we shouldn't give more from less
+			ingredients = {
+				{type="fluid", name="butane", amount=20},
+				{type="fluid", name="water", amount=30}
+			},
+			results = {{type="fluid", name="petroleum-gas", amount=10}},
+			crafting_machine_tint = {
+				primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+				secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+				tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+				quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+			}
+		}
+	})
+else
+	data:extend({
+		{
+			type = "recipe",
+			name = "petroleum-gas-cracking",
+			icon = "__scrap-chemistry__/graphics/icons/fluid/petroleum-gas-cracking.png",
+			category = "chemistry",
+			subgroup = "fluid-recipes",
+			order = "b[fluid-chemistry]-c[petroleum-gas-cracking]",
+			enabled = false,
+			allow_productivity = true,
+			hide_from_signal_gui = false,
+			energy_required = 2,
+			-- Technically, 4*C3H8 (propane) + 2*H2O = 3*C4H10 (butane) + 1*O2
+			-- but this is more balanced with butane pollution
+			ingredients = {
+				{type="fluid", name="petroleum-gas", amount=20},
+				{type="fluid", name="water", amount=30}
+			},
+			results = {{type="fluid", name="butane", amount=10}},
+			crafting_machine_tint = {
+				primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+				secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+				tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+				quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+			}
 		}
 	})
 end

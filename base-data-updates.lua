@@ -1,4 +1,5 @@
 local frep = require("__fdsl__.lib.recipe")
+local legacy = not settings.startup["scrap-chemistry-butane-realism"].value
 
 -------------------------------------------------------------------------- Oil processing
 
@@ -6,9 +7,9 @@ local frep = require("__fdsl__.lib.recipe")
 local _,basic_petroleum_result = frep.get_result("basic-oil-processing", "petroleum-gas")
 if basic_petroleum_result then
 	local amount = basic_petroleum_result.amount
-	basic_petroleum_result.fluidbox_index = 3
-	frep.add_result("basic-oil-processing", {type="fluid", name="butane", amount=amount - 5, fluidbox_index=2})
-	frep.add_result("basic-oil-processing", {type="fluid", name="sour-gas", amount=amount - 20, fluidbox_index=1})
+	basic_petroleum_result.fluidbox_index = 1
+	frep.add_result("basic-oil-processing", {type="fluid", name="butane", amount=amount-5, fluidbox_index=3})
+	frep.add_result("basic-oil-processing", {type="fluid", name="sour-gas", amount=amount-20, fluidbox_index=2})
 end
 
 local function fudge_results(recipe_name, extra_amount)
@@ -105,18 +106,29 @@ if coal_liquefaction then
 	frep.replace_result("coal-liquefaction", "petroleum-gas", "butane")
 	frep.replace_result("coal-liquefaction", "light-oil", "petroleum-gas")
 	frep.replace_result("coal-liquefaction", "heavy-oil", "light-oil")
-	-- simple coal liquefaction too!
 end
+
 if mods["space-age"] then
 	local simple_coal_liquefaction = data.raw.recipe["simple-coal-liquefaction"]
 	if simple_coal_liquefaction then
-		simple_coal_liquefaction.icons = {
-			{icon="__space-age__/graphics/icons/calcite-2.png", shift={-6,-6}, scale=0.3, draw_background=true},
-			{icon="__scrap-chemistry__/graphics/icons/fluid/simple-coal-liquefaction-overlay.png", draw_background=true},
-		}
-		frep.replace_result("simple-coal-liquefaction", "heavy-oil", "petroleum-gas")
-		frep.add_result("simple-coal-liquefaction", {type="fluid", name="butane", amount=10})
-		frep.add_result("simple-coal-liquefaction", {type="item", name="tar", amount=1})
+		if settings.startup["scrap-chemistry-butane-realism"].value then
+			-- Butane is the WORST, so make it the main result =D
+			simple_coal_liquefaction.icons = {
+				{icon="__space-age__/graphics/icons/calcite-2.png", shift={-6,-6}, scale=0.3, draw_background=true},
+				{icon="__scrap-chemistry__/graphics/icons/fluid/simple-coal-liquefaction-overlay-butane.png", draw_background=true},
+			}
+			frep.replace_result("simple-coal-liquefaction", "heavy-oil", {type="fluid", name="butane", amount=50, fluidbox_index=3})
+			frep.add_result("simple-coal-liquefaction", {type="fluid", name="petroleum-gas", amount=10, fluidbox_index=1})
+			frep.add_result("simple-coal-liquefaction", {type="item", name="tar", amount=1})
+		else
+			simple_coal_liquefaction.icons = {
+				{icon="__space-age__/graphics/icons/calcite-2.png", shift={-6,-6}, scale=0.3, draw_background=true},
+				{icon="__scrap-chemistry__/graphics/icons/fluid/simple-coal-liquefaction-overlay.png", draw_background=true},
+			}
+			frep.replace_result("simple-coal-liquefaction", "heavy-oil", {type="fluid", name="petroleum-gas", amount=50, fluidbox_index=1})
+			frep.add_result("simple-coal-liquefaction", {type="fluid", name="butane", amount=10, fluidbox_index=3})
+			frep.add_result("simple-coal-liquefaction", {type="item", name="tar", amount=1})
+		end
 	end
 end
 

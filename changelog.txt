@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.3.1
+Version: 0.4.0
 Date: ????
   Changes:
+    - Shuffled fluidbox indices for oil refinery recipes around to reduce the amount of differences between them
+    - Butane is now cracked into petroleum gas, instead of the other way around (can be disabled)
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.0
 Date: 2025-11-26

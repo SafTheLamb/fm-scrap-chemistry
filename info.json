@@ -3,7 +3,7 @@
 	"title": "Scrappy Chemistry",
 	"description": "Make the fluid processing recipes more imperfect with new gases.",
 	"author": "SafTheLamb",
-	"version": "0.3.1",
+	"version": "0.4.0",
 	"factorio_version": "2.0",
 	"package": {
 		"ignore": ["thumbnail.afphoto", "**/*.afphoto", "**/*.ase", "**/*.afphoto~lock~", "**/*.pdn", "renders/**"] 
@@ -11,7 +11,7 @@
 	"dependencies": [
 		"base",
 		"? space-age",
-		"scrap-industry >= 1.0.0",
+		"scrap-industry >= 1.0.2",
 		"fdsl >= 0.2.4",
 		"? Flare Stack",
 		"(?) any-planet-start"
