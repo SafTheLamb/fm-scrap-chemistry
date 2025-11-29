@@ -1,6 +1,10 @@
 local ftech = require("__fdsl__.lib.technology")
 
-ftech.add_unlock("oil-processing", "petroleum-gas-cracking")
+if settings.startup["scrap-chemistry-butane-realism"].value then
+	ftech.add_unlock("oil-processing", "butane-cracking")
+else
+	ftech.add_unlock("oil-processing", "petroleum-gas-cracking")
+end
 ftech.add_unlock("oil-processing", "solid-fuel-from-butane")
 ftech.add_unlock("plastics", "plastic-bar-from-butane")
 
