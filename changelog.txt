@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: ????
-  Changes:
+  Compatibility:
+    - Hard Vulcanus: Force disable the coal liquefaction nerf setting, since it breaks Scrappy Chemistry (approved by thesixthroc)
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.1
 Date: 2025-11-29
