@@ -1,7 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.4.3
+Version: 0.5.0
 Date: ????
-  Changes:
+  Major Features:
+    - Scrappy Industry is no longer required! The new Scrap Toolkit dependency handles all the complicated logic required
+  Bugfixes:
+    - Changed the recipe for Methane to require coal instead of light oil... because you can't get light oil yet... derp
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.2
 Date: 2025-11-30
