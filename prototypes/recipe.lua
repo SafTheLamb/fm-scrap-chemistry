@@ -14,9 +14,10 @@ data:extend({
 		order = "a[fluid]-b[oil]-m[methane]",
 		enabled = false,
 		allow_productivity = true,
+		show_amount_in_title = false,
 		energy_required = 1,
 		ingredients = {
-			{type="fluid", name="light-oil", amount=10},
+			{type="item", name="coal", amount=1},
 			{type="fluid", name="petroleum-gas", amount=20},
 		},
 		results = {{type="fluid", name="methane", amount=40}},
