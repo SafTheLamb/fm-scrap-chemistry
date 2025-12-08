@@ -3,6 +3,9 @@ Version: 0.5.1
 Date: ????
   Changes:
     - Added fuel value to Butane and adjusted other fuel values (balanced around Gas Boiler)
+  Compatibility:
+    - AAI Industry: Potential compatibility fix via hidden dependency
+    - I wasn't able to reproduce it locally, but this theoretically could happen if the load order was set up differently with more mods in the mix
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.0
 Date: 2025-12-02
