@@ -8,8 +8,10 @@ local _,basic_petroleum_result = frep.get_result("basic-oil-processing", "petrol
 if basic_petroleum_result then
 	local amount = basic_petroleum_result.amount
 	basic_petroleum_result.fluidbox_index = 1
-	frep.add_result("basic-oil-processing", {type="fluid", name="butane", amount=amount-5, fluidbox_index=3})
-	frep.add_result("basic-oil-processing", {type="fluid", name="sour-gas", amount=amount-20, fluidbox_index=2})
+	basic_petroleum_result.amount = basic_petroleum_result.amount - 25
+	data.raw.recipe["basic-oil-processing"].icon = "__scrap-chemistry__/graphics/icons/fluid/basic-oil-processing.png"
+	frep.add_result("basic-oil-processing", {type="fluid", name="butane", amount=amount, fluidbox_index=3})
+	frep.add_result("basic-oil-processing", {type="fluid", name="sour-gas", amount=amount-10, fluidbox_index=2})
 end
 
 local function fudge_results(recipe_name, extra_amount)
@@ -80,6 +82,11 @@ if settings.startup["scrap-chemistry-sulfur"].value then
 	frep.replace_ingredient("sulfur", "petroleum-gas", "sour-gas")
 	frep.add_result("heavy-oil-cracking", {type="fluid", name="sour-gas", amount=10})
 	frep.add_result("light-oil-cracking", {type="fluid", name="sour-gas", amount=5})
+	if settings.startup["scrap-chemistry-butane-realism"].value then
+		frep.add_result("butane-cracking", {type="fluid", name="sour-gas", amount=5})
+	else
+		frep.add_result("petroleum-gas-cracking", {type="fluid", name="sour-gas", amount=5})
+	end
 
 	if mods["space-age"] then
 		local sulfur_geyser = data.raw.resource["sulfuric-acid-geyser"]

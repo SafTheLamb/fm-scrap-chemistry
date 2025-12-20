@@ -1,4 +1,4 @@
---- Fluidbox index priority is as follows:
+--- Fluidbox index priority for the oil refinery is as follows:
 --- Heavy oil is prioritized at index 1
 --- Light oil is prioritized at index 2
 --- Butane is prioritized at index 3
@@ -46,9 +46,9 @@ data:extend({
 			{type="item", name="tar", amount=1}
 		},
 		results = {
-			{type="fluid", name="light-oil", amount=30, fluidbox_index=2},
-			{type="fluid", name="petroleum-gas", amount=20, fluidbox_index=1},
-			{type="fluid", name="sour-gas", amount=20, fluidbox_index=3} -- sour gas has low priority over fluid index
+			{type="fluid", name="light-oil", amount=60, fluidbox_index=2},
+			{type="fluid", name="petroleum-gas", amount=30, fluidbox_index=1},
+			{type="fluid", name="butane", amount=20, fluidbox_index=3}
 		}
 	},
 	{
@@ -141,7 +141,7 @@ data:extend({
 		type = "recipe",
 		name = "tar",
 		localised_name = {"recipe-name.synthetic-tar"},
-		category = "chemistry",
+		category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
 		subgroup = "raw-material",
 		order = "b[chemistry]-b[tar]",
 		enabled = false,
@@ -221,9 +221,9 @@ if settings.startup["scrap-chemistry-butane-realism"].value then
 			type = "recipe",
 			name = "butane-cracking",
 			icon = "__scrap-chemistry__/graphics/icons/fluid/butane-cracking.png",
-			category = "chemistry",
+			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
 			subgroup = "fluid-recipes",
-			order = "b[fluid-chemistry]-c[butane-cracking]",
+			order = "b[fluid-chemistry]-c[more]-a[butane-cracking]",
 			enabled = false,
 			allow_productivity = true,
 			hide_from_signal_gui = false,
@@ -248,7 +248,7 @@ else
 			type = "recipe",
 			name = "petroleum-gas-cracking",
 			icon = "__scrap-chemistry__/graphics/icons/fluid/petroleum-gas-cracking.png",
-			category = "chemistry",
+			category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
 			subgroup = "fluid-recipes",
 			order = "b[fluid-chemistry]-c[petroleum-gas-cracking]",
 			enabled = false,
@@ -285,8 +285,8 @@ if mods["space-age"] then
 				{icon="__scrap-chemistry__/graphics/icons/fluid/methane.png", shift={0,4}, scale=0.4, draw_background=true}
 			},
 			category = "organic-or-chemistry",
-			subgroup = "space-processing",
-			order = "a[methane]",
+			subgroup = "fluid-recipes",
+			order = "d[other-chemistry]-B[methane-from-carbon]",
 			enabled = false,
 			allow_productivity = true,
 			show_amount_in_title = false,

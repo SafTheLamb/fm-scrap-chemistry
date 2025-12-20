@@ -1,7 +1,13 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.2
 Date: ????
+  Balancing:
+    - Make butane the primary result from basic oil processing, followed by sour gas, then petroleum gas (used to be petroleum gas -> butane -> sour gas)
+    - Specifically: 45 -> 20 petroleum gas, 25 -> 35 sour gas, 40 -> 45 butane
+    - Add sour gas to the results from butane cracking (or petroleum gas cracking, if butane realism is disabled)
   Changes:
+    - Move "methane from carbon" from space recipes to the fluid recipes category
+    - Butane pollution: Replace Sour gas byproduct with more Butane
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.1
 Date: 2025-12-08
