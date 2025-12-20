@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.2
-Date: ????
+Date: 2025-12-20
   Balancing:
     - Make butane the primary result from basic oil processing, followed by sour gas, then petroleum gas (used to be petroleum gas -> butane -> sour gas)
     - Specifically: 45 -> 20 petroleum gas, 25 -> 35 sour gas, 40 -> 45 butane
