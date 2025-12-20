@@ -12,9 +12,10 @@
 		"base",
 		"scraptk",
 		"? space-age",
-		"fdsl >= 0.2.4",
+		"fdsl >= 0.3.0",
 		"? Flare Stack",
 		"(?) any-planet-start",
-		"(?) aai-industry"
+		"(?) aai-industry",
+		"? crushing-industry"
 	]
 }

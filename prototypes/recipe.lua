@@ -1,3 +1,7 @@
+local frep = require("__fdsl__.lib.recipe")
+
+local coal_item = mods["crushing-industry"] and settings.startup["crushing-industry-coal"].value and "crushed-coal" or "coal"
+
 --- Fluidbox index priority for the oil refinery is as follows:
 --- Heavy oil is prioritized at index 1
 --- Light oil is prioritized at index 2
@@ -130,7 +134,7 @@ data:extend({
 		energy_required = 1,
 		ingredients = {
 			{type="fluid", name="butane", amount=20},
-			{type="item", name="coal", amount=1}
+			table.pack(frep.get_ingredient("plastic-bar", coal_item))[2]
 		},
 		results = {
 			{type="item", name="plastic-bar", amount=2}
