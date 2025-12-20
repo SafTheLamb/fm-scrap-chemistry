@@ -2,6 +2,7 @@
 Version: 0.5.3
 Date: ????
   Changes:
+    - Move tar synthesis to chemistry-or-cryogenics instead of chemistry-or-organic (it's synthetic tar, not organic)
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.2
 Date: 2025-12-20
@@ -12,6 +13,7 @@ Date: 2025-12-20
   Changes:
     - Move "methane from carbon" from space recipes to the fluid recipes category
     - Butane pollution: Replace Sour gas byproduct with more Butane
+    - Butane cracking and synthetic tar can now be crafted in the biochamber
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.1
 Date: 2025-12-08

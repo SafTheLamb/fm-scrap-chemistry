@@ -141,7 +141,7 @@ data:extend({
 		type = "recipe",
 		name = "tar",
 		localised_name = {"recipe-name.synthetic-tar"},
-		category = mods["space-age"] and "organic-or-chemistry" or "chemistry",
+		category = mods["space-age"] and "chemistry-or-cryogenics" or "chemistry",
 		subgroup = "raw-material",
 		order = "b[chemistry]-b[tar]",
 		enabled = false,
