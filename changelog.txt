@@ -2,6 +2,11 @@
 Version: 0.5.5
 Date: ????
   Changes:
+    - When "Modify rocket fuel" is enabled, rocket fuel is changed to self-recycle, instead of recycling into ~2.5 solid fuel
+    - Methane in rocket fuel is increased from 10 to 20
+    - Update Hydrazine rocket fuel icon to match
+  Compatibility:
+    - Crushing Industry: Crushed coal is now used when enabled for methane and sour gas sweetening
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.4
 Date: 2025-12-20

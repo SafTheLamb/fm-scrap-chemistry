@@ -48,8 +48,9 @@ frep.replace_ingredient("explosives", "water", "methane")
 if settings.startup["scrap-chemistry-rocket-fuel"].value then
 	local rocket_fuel_recipe = data.raw.recipe["rocket-fuel"]
 	if rocket_fuel_recipe then
+		rocket_fuel_recipe.auto_recycle = false
 		frep.add_category("rocket-fuel", "chemistry")
-		frep.add_ingredient("rocket-fuel", {type="fluid", name="methane", amount=10})
+		frep.add_ingredient("rocket-fuel", {type="fluid", name="methane", amount=20})
 		rocket_fuel_recipe.crafting_machine_tint = rocket_fuel_recipe.crafting_machine_tint or {
 			primary = {r = 1.0, g = 0.7, b = 0.0, a = 1.000},
 			secondary = {r = 0.996, g = 0.742, b = 0.408, a = 1.000},
@@ -142,12 +143,15 @@ end
 -------------------------------------------------------------------------- Hydrazine
 
 if mods["space-age"] then
-	local ammonia_rocket_fuel = data.raw.recipe["ammonia-rocket-fuel"]
-	if ammonia_rocket_fuel then
-		ammonia_rocket_fuel.localised_name = {"recipe-name.hydrazine-rocket-fuel"}
-		ammonia_rocket_fuel.order = "a[ammonia]-c[hydrazine]-a[rocket-fuel]"
-		frep.remove_ingredient("ammonia-rocket-fuel", "water")
-		frep.replace_ingredient("ammonia-rocket-fuel", "ammonia", "hydrazine")
+	if settings.startup["scrap-chemistry-rocket-fuel"].value then
+		local ammonia_rocket_fuel = data.raw.recipe["ammonia-rocket-fuel"]
+		if ammonia_rocket_fuel then
+			ammonia_rocket_fuel.localised_name = {"recipe-name.hydrazine-rocket-fuel"}
+			ammonia_rocket_fuel.icon = "__scrap-chemistry__/graphics/icons/hydrazine-rocket-fuel.png"
+			ammonia_rocket_fuel.order = "a[ammonia]-c[hydrazine]-a[rocket-fuel]"
+			frep.remove_ingredient("ammonia-rocket-fuel", "water")
+			frep.replace_ingredient("ammonia-rocket-fuel", "ammonia", "hydrazine")
+		end
 	end
 	frep.replace_ingredient("fluoroketone", "ammonia", "hydrazine")
 	frep.replace_ingredient("fusion-power-cell", "ammonia", "hydrazine")

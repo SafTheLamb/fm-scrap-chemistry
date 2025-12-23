@@ -21,7 +21,7 @@ data:extend({
 		show_amount_in_title = false,
 		energy_required = 1,
 		ingredients = {
-			{type="item", name="coal", amount=1},
+			{type="item", name=coal_item, amount=1},
 			{type="fluid", name="petroleum-gas", amount=20},
 		},
 		results = {{type="fluid", name="methane", amount=40}},
@@ -82,7 +82,7 @@ data:extend({
 		hide_from_signal_gui = false,
 		energy_required = 1,
 		ingredients = {
-			{type="item", name=mods["space-age"] and "calcite" or "coal", amount=1},
+			{type="item", name=mods["space-age"] and "calcite" or coal_item, amount=1},
 			{type="fluid", name="sour-gas", amount=50}
 		},
 		results = {
