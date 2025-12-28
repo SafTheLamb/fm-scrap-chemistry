@@ -30,6 +30,13 @@ if mods["space-age"] then
 			setting_type = "startup",
 			default_value = true,
 			order = "c[space-age]-a[thruster-fuel]"
+		},
+		{
+			type = "bool-setting",
+			name = "scrap-chemistry-casting-tar",
+			setting_type = "startup",
+			default_value = true,
+			order = "c[space-age]-b[casting-tar]"
 		}
 	})
 end
