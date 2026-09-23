@@ -83,7 +83,7 @@ data:extend({
 		type = "item",
 		name = "impure-fuel",
 		icon = "__scrap-chemistry__/graphics/icons/remix/impure-fuel.png",
-		fuel_category = "chemical",
+		fuel_categories = {"chemical"},
 		fuel_value = data.raw.item["solid-fuel"].fuel_value,
 		fuel_acceleration_multiplier = 0.85,
 		fuel_top_speed_multiplier = 0.95,
