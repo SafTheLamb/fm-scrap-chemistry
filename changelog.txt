@@ -4,6 +4,7 @@ Date: ??????
   Changes:
     - Fix fuel_category -> fuel_categories which was changed with 2.1.20
     - Rename Standard mode to Legacy mode
+    - Bump scraptk dependency version
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.1
 Date: 2026-09-22
